@@ -35,7 +35,7 @@ public class QuestionTwo_check_permutation {
         if(inputA.length() != inputB.length())
             return false;
 
-        ArrayList<Integer> index = new ArrayList<Integer>(inputA.length());
+        ArrayList<Integer> index = new ArrayList<Integer>(128); //assume ascii
 
         for(int i=0; i < index.size(); i++ ){
             index.set(inputA.charAt(i), 1);
