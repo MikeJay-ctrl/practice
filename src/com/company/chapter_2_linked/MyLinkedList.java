@@ -37,7 +37,19 @@ public class MyLinkedList<T> implements Iterable<T> {
             this.end = this.head;
             return this.head;
         }
-
+        /*
+        if there is no this.end
+        
+        Node<T> runner = this.head;
+        while(runner != null){
+            if(runner.next != null){
+                runner = runner.next;
+            } else {
+                break;
+            }
+        }
+        runner.next = new Node(item);
+        */
         this.end.next = new Node(item);
         Node<T> current = this.end;
 
@@ -47,9 +59,15 @@ public class MyLinkedList<T> implements Iterable<T> {
 
 
 
-    public T remove(int index){
+    public T remove(int index) throws Exception {
+        if(index > this.length-1){
+            throw new Exception("Index Out of Bounds Exception");
+        }
+        
+        this.length --;
         Node<T> current = this.head;
         Node<T> prev = null;
+        
         int currentIdx = 0;
         while(currentIdx < index){
             prev = current;
