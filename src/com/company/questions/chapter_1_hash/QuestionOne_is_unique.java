@@ -1,4 +1,4 @@
-package com.company.questions;
+package com.company.questions.chapter_1_hash;
 
 import java.util.ArrayList;
 
