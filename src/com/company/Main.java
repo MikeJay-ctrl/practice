@@ -4,9 +4,11 @@ import com.company.chapter_2_linked.MyLinkedList;
 import com.company.chapter_2_linked.QuestionOne_remove_duplicates;
 import com.company.chapter_2_linked.QuestionThree_delete_middle_node;
 import com.company.chapter_2_linked.QuestionTwo_kth_to_last;
+import com.company.chapter_4_trees.MyBinaryTree;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -40,7 +42,14 @@ public class Main {
 
         //QuestionOne_remove_duplicates.run(new LinkedList(Arrays.asList(1,2,3,4,5,6,7,7,8,9,4)));
         //QuestionOne_remove_duplicates.run(new LinkedList(Arrays.asList(19,9,4,2,6,9,4,5,2,1,3,1)));
-        QuestionThree_delete_middle_node.run(new LinkedList(Arrays.asList(1,2,3,4,5,6,7,8,9,10)));
+        //QuestionThree_delete_middle_node.run(new LinkedList(Arrays.asList(1,2,3,4,5,6,7,8,9,10)));
+
+
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8);
+
+        MyBinaryTree<Integer> myT = new MyBinaryTree<Integer>(list);
+
+        myT.inOrderTraversal();
 
     }
 }
