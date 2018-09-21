@@ -69,26 +69,49 @@ public class MyBinaryTree<T> {
 
     public void levels(){
 
+        // linked list to hold node-list
         List<LinkedList<TreeNode>> levels = new ArrayList<LinkedList<TreeNode>>();
-        Queue<TreeNode> visited = new Queue<TreeNode>();
-        ArrayList<TreeNode> unVisited = new ArrayList<TreeNode>();
 
-        visited.add(this.head);
+        // adjacency list
+        List<TreeNode> adj_queue = new ArrayList<TreeNode>();
 
-        while(!visited.isEmpty()){
-            TreeNode top = visited.element();
+        adj_queue.add(this.head);
+        int level = 0;
+        LinkedList<TreeNode> curr = new LinkedList<TreeNode>();
 
-            visited.add(top.getLeft());
-            visited.add(top.getRight());
+        //BFS
+        while(adj_queue.size() != 0){
 
-            // add level
-            LinkedList<TreeNode> l = new LinkedList<TreeNode>() {{ add(top);}};
-            levels.add(l);
+            if(levels.get(level) == null){
+                curr = new LinkedList<TreeNode>(){{ add(adj_queue.remove(0));}};
+                levels.add(curr);
+            } else {
+                curr.add(adj_queue.remove(0));
+            }
 
-
+            if(adj_queue.size() == 0){
+                curr.forEach(node -> {
+                    adj_queue.add(node.getLeft());
+                    adj_queue.add(node.getRight());
+                });
+                curr = null;
+                level++;
+            }
         }
+    }
 
 
+    public void isTreeBalanced(){
+        //BFS
+        // return Math.abs(heightL -heightR) ? false : true; 1
+    }
+
+    public int treeHeight(TreeNode top, int height){
+
+        if(top == null){
+            return height;
+        }
+        return Math.max(treeHeight(top.getLeft(), height+1), treeHeight(top.getRight(), height+1);)
     }
 
 
