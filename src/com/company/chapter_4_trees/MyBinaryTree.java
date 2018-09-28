@@ -66,7 +66,7 @@ public class MyBinaryTree<T> {
         this.inOrderTraversal(scanner.getRight());
 
     }
-
+ //4.3 - list of depths
     public void levels(){
 
         // linked list to hold node-list
@@ -101,10 +101,36 @@ public class MyBinaryTree<T> {
     }
 
 
-    public void isTreeBalanced(){
-        //BFS
-        // return Math.abs(heightL -heightR) ? false : true; 1
+    // 4.4
+    public boolean isTreeBalanced(){
+        List<TreeNode> adj_queue = new ArrayList<TreeNode>();
+
+        adj_queue.add(this.head);
+
+        while(adj_queue.size() != 0){
+            TreeNode head = adj_queue.remove(0);
+            if(Math.abs(treeHeight(head.getLeft(), 0) - treeHeight(head.getRight(), 0)) > 1)
+                return false;
+            if(head.getLeft() != null)
+                adj_queue.add(head.getLeft());
+            if(head.getRight() != null)
+                adj_queue.add(head.getRight());
+
+        }
+        return true;
     }
+
+    // 4.5
+    public boolean isBST() {
+
+        //List<TreeNode> nodes = new ArrayList<TreeNode>();
+
+        return false;
+
+    }
+
+
+
 
     public int treeHeight(TreeNode top, int height){
 
